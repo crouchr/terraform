@@ -1,0 +1,4 @@
+/global/s3/terraform.tfstate
+/global/s3/.terraform/
+/vpc/.terraform/
+/global/terraform.tfstate
