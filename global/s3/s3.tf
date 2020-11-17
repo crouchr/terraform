@@ -10,9 +10,9 @@ resource "aws_s3_bucket" "terraform_state" {
   bucket = "dev-rch-remote-state-s3"
 
   # enable once basically working
-  #versioning {
-  #  enabled = true
-  #}
+  versioning {
+    enabled = true
+  }
 
   tags = {
     Name        = "dev-rch-remote-state-s3"
@@ -27,4 +27,3 @@ resource "aws_s3_bucket" "terraform_state" {
   #  prevent_destroy = true
   #}
 }
-
