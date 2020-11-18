@@ -12,15 +12,18 @@ resource "aws_instance" "server" {
   ami = "ami-0b850cf02cc00fdc8" # Marketplace CentOS7 AMI
   instance_type = "t2.micro"    # "t2.micro"
 
-  user_data = <<-EOF
-    #!/bin/bash
-    mkdir -p /var/www/html/
-    yum update -y
-    yum install -y httpd lsof
-    service httpd start
-    usermod -a -G apache centos
-    chown -R centos:apache /var/www
-  EOF
+  # read User Data from a template file - nicer as the template file can be unit tested independently
+  user_data = file("user_data.tpl")
+
+  #user_data = <<-EOF
+  #  #!/bin/bash
+  #  mkdir -p /var/www/html/
+  #  yum update -y
+  #  yum install -y httpd lsof
+  #  service httpd start
+  #  usermod -a -G apache centos
+  #  chown -R centos:apache /var/www
+  #EOF
 
   #key_name = "rch-nvm-sshkey"   # key for SSHing into this instance
   key_name = "rch-lab-key"      # generated in AWS console for SSHing into this instance
