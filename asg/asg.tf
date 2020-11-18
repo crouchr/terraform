@@ -1,3 +1,4 @@
+
 resource "aws_autoscaling_group" "myasg" {
   launch_configuration = aws_launch_configuration.mylaunchconfig.name
   name = "dev-rch-asg-01"   # This appears in the console

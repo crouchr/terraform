@@ -24,6 +24,24 @@ resource "aws_launch_configuration" "mylaunchconfig" {
     create_before_destroy = true
   }
 
+    tags = [
+    {
+      key = "Name"
+      value = "dev-rch-launch-config-01"
+      propagate_at_launch = true
+    },
+    {
+      key = "OWNER_TEAM"
+      value = "NETWORK"
+      propagate_at_launch = true
+    },
+    {
+      key = "PURPOSE"
+      value = "SANDBOX_LAB"
+      propagate_at_launch = true
+    },
+  ]
+
 }
 
 
