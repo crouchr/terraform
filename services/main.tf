@@ -15,17 +15,6 @@ resource "aws_instance" "server" {
   # read User Data from a template file - nicer as the template file can be unit tested independently
   user_data = file("user_data.tpl")
 
-  #user_data = <<-EOF
-  #  #!/bin/bash
-  #  mkdir -p /var/www/html/
-  #  yum update -y
-  #  yum install -y httpd lsof
-  #  service httpd start
-  #  usermod -a -G apache centos
-  #  chown -R centos:apache /var/www
-  #EOF
-
-  #key_name = "rch-nvm-sshkey"   # key for SSHing into this instance
   key_name = "rch-lab-key"      # generated in AWS console for SSHing into this instance
 
   vpc_security_group_ids = [data.terraform_remote_state.sg_map.outputs.vpc_public_sg]
