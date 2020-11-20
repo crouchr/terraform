@@ -16,7 +16,7 @@ resource "aws_launch_configuration" "mylaunchconfig" {
   #subnet_id = data.terraform_remote_state.vpc.outputs.public_subnet_lab01
 
   # read User Data from a template file - nicer as the template file can be unit tested independently
-  user_data = file("user_data.tpl")
+  user_data = file("user_data.sh")
 
   key_name = "rch-lab-key"            # generated in AWS console for SSHing into this instance
 
